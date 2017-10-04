@@ -1,0 +1,10 @@
+---
+profile::blog::wordpress::mysql_root_pass: 'hohmaeluomauZohbeo7TohraeWucaiz8'
+profile::blog::wordpress::docroot: '/opt/www'
+profile::blog::wordpress::wp_user: 'wordpress'
+# Password is 'wordpress'
+profile::blog::wordpress::wp_pass: '$1$l8yDV3Ix$ttcq0gAsV57xEtAE2Ef180'
+profile::blog::wordpress::wp_group: 'wordpress'
+profile::blog::wordpress::db_user: 'wordpress'
+profile::blog::wordpress::db_name: 'wordpress'
+profile::blog::wordpress::db_pass: 'bb69laskdj381b4b9de3a232'

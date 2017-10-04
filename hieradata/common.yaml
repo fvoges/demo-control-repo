@@ -1,2 +1,23 @@
 ---
 message: "This node is using common data"
+
+profile::base::linux::redhat::packages:
+  'git':
+    'ensure': 'present'
+  'cron':
+    'ensure': 'present'
+
+profile::base::linux::redhat::redhat6::packages:
+  'mc':
+    'ensure': 'latest'
+
+profile::base::linux::redhat::redhat7::packages:
+  'chrony':
+    'ensure': 'absent'
+
+profile::base::linux::redhat::redhat7::services:
+  'chronyd':
+    'ensure': 'stopped'
+  'auditd':
+    'ensure': 'stopped'
+

@@ -1,0 +1,57 @@
+---
+
+pe_code_manager_webhook::code_manager::create_and_manage_git_deploy_key: false
+
+#Enable code manager
+puppet_enterprise::master::code_manager::authenticate_webhook: false
+puppet_enterprise::master::code_manager::invalid_branches: 'correct'
+puppet_enterprise::profile::master::code_manager_auto_configure: true
+puppet_enterprise::profile::master::file_sync_enabled: true
+puppet_enterprise::profile::master::r10k_private_key: '/etc/puppetlabs/puppetserver/ssh/id-control_repo.rsa'
+puppet_enterprise::profile::master::r10k_remote: 'git@github.com:fvoges/shadowsun-control-repo.git'
+
+#pe-console-services tuning
+#https://docs.puppetlabs.com/pe/latest/console_config.html#tuning-the-classifier-synchronization-period
+#disable classifier scheduled sync and rely on r10k postrun command to sync the classes
+puppet_enterprise::profile::console::classifier_synchronization_period: 0
+
+#PE3.7+
+#Allow access to the puppetdb performance dashboard from non-localhost
+#This is insecure and also allows access to all API endpoints without verification
+puppet_enterprise::profile::puppetdb::listen_address: '0.0.0.0'
+puppet_enterprise::profile::amq::broker::heap_mb: '96'
+puppet_enterprise::profile::master::java_args:
+  Xmx: '256m'
+  Xms: '128m'
+  'XX:+UseG1GC': ''
+puppet_enterprise::profile::puppetdb::java_args:
+  Xmx: '128m'
+  Xms: '96m'
+  'XX:+UseG1GC': ''
+puppet_enterprise::profile::console::java_args:
+  Xmx: '64m'
+  Xms: '64m'
+  'XX:+UseG1GC': ''
+puppet_enterprise::master::puppetserver::jruby_max_active_instances: 1  #PE3.7.2 only
+puppet_enterprise::profile::console::delayed_job_workers: 1
+#shared_buffers takes affect during install but is not managed after
+puppet_enterprise::profile::database::shared_buffers: '4MB'
+#2015.3.2 and above
+puppet_enterprise::profile::orchestrator::java_args:
+  Xmx: '64m'
+  Xms: '64m'
+  'XX:+UseG1GC': ''
+puppet_enterprise::puppetdb::command_processing_threads: 1
+
+profile::puppet::backup::destination: '/vol/backup/pe_backup/'
+
+profile::base::ssh::permit_root_login: 'yes'
+profile::base::ssh::ssh_config_forward_agent: 'no'
+profile::base::ssh::ssh_config_forward_x11: 'no'
+profile::base::ssh::sshd_allow_tcp_forwarding: 'no'
+profile::base::ssh::sshd_config_permitemptypasswords: 'no'
+profile::base::ssh::sshd_config_use_dns: 'no'
+profile::base::ssh::sshd_password_authentication: 'yes'
+profile::base::ssh::sshd_x11_forwarding: 'no'
+profile::base::ssh::ssh_key_import: true
+
