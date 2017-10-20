@@ -37,7 +37,7 @@ class profile::blog::wordpress (
   include ::apache
   include ::apache::mod::php
   class { '::mysql::server':
-    root_password => $_mysql_root_pw,
+    root_password => $_mysql_root_pass,
   }
   class { '::mysql::bindings':
     php_enable => true,
