@@ -1,5 +1,5 @@
 class profile::base::linux {
-  $kernel  = $facts['os']['kernel'].downcase
+  $kernel  = $facts['kernel'].downcase
   $family  = $facts['os']['family'].downcase
 
   include "::profile::base::${kernel}::${family}"

@@ -1,7 +1,7 @@
 class profile::base::solaris (
   Boolean $enable_netbackup,
 ) {
-  $kernel  = $facts['os']['kernel'].downcase
+  $kernel  = $facts['kernel'].downcase
   $release = $facts['os']['release']['major']
   $family  = $facts['os']['family'].downcase
 

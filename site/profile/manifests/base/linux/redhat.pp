@@ -2,7 +2,7 @@ class profile::base::linux::redhat (
   Hash[Hash] $packages,
   Hash[Hash] $services,
 ) {
-  $kernel  = $facts['os']['kernel'].downcase
+  $kernel  = $facts['kernel'].downcase
   $family  = $facts['os']['family'].downcase
   $release = $facts['os']['release']['major']
 
