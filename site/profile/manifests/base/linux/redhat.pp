@@ -1,6 +1,6 @@
 class profile::base::linux::redhat (
-  Hash[Hash] $packages,
-  Hash[Hash] $services,
+  Hash $packages,
+  Hash $services,
 ) {
   $kernel  = $facts['kernel'].downcase
   $family  = $facts['os']['family'].downcase
