@@ -14,7 +14,7 @@ class profile::puppet::balancermember () {
   @@haproxy::balancermember { "puppet_${trusted['certname']}":
     listening_service => 'puppet00',
     server_names      => $trusted['certname'],
-    ipaddresses       => $facts['networking']['ip'],
+    ipaddresses       => $facts['networking']['interfaces']['eth1']['ip'],
     ports             => '8140',
     options           => [
       'check',
@@ -29,7 +29,7 @@ class profile::puppet::balancermember () {
   @@haproxy::balancermember { "orchestrator_${trusted['certname']}":
     listening_service => 'orchestrator00',
     server_names      => $trusted['certname'],
-    ipaddresses       => $facts['networking']['ip'],
+    ipaddresses       => $facts['networking']['interfaces']['eth1']['ip'],
     ports             => '8142',
     options           => [
       'check',

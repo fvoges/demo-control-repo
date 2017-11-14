@@ -11,19 +11,19 @@ class profile::puppet::loadbalancer (
   }
 
   file { "${certs_d}/puppet_cacrt.pem":
-    ensure => file,
-    owner  => 'haproxy',
-    group  => 'haproxy',
-    mode   => '0644',
-    source => $settings::cacert,
+    ensure  => file,
+    owner   => 'haproxy',
+    group   => 'haproxy',
+    mode    => '0644',
+    content => file($settings::cacert),
   }
 
   file { "${certs_d}/puppet_cacrl.pem":
-    ensure => file,
-    owner  => 'haproxy',
-    group  => 'haproxy',
-    mode   => '0644',
-    source => $settings::cacrl,
+    ensure  => file,
+    owner   => 'haproxy',
+    group   => 'haproxy',
+    mode    => '0644',
+    content => file($settings::cacrl),
   }
 
   haproxy::listen { 'puppet00':
