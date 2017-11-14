@@ -11,9 +11,9 @@ class profile::puppet::balancermember () {
 #   server pe-compiler-slice-1.example.com 192.168.0.187:8140 ca-file /etc/haproxy/certs.d/puppet_cacrt.pem crl-file /etc/haproxy/certs.d/puppet_cacrl.pem port 8140 verify required check check-ssl
 #   server pe-compiler-slice-2.example.com 192.168.0.188:8140 ca-file /etc/haproxy/certs.d/puppet_cacrt.pem crl-file /etc/haproxy/certs.d/puppet_cacrl.pem port 8140 verify required check check-ssl
 
-  @@haproxy::balancermember { "puppet_${trusted['clientcert']}":
+  @@haproxy::balancermember { "puppet_${trusted['certname']}":
     listening_service => 'puppet00',
-    server_names      => $trusted['clientcert'],
+    server_names      => $trusted['certname'],
     ipaddresses       => $facts['networking']['ip'],
     ports             => '8140',
     options           => [
@@ -26,9 +26,9 @@ class profile::puppet::balancermember () {
     ],
   }
 
-  @@haproxy::balancermember { "orchestrator_${trusted['clientcert']}":
+  @@haproxy::balancermember { "orchestrator_${trusted['certname']}":
     listening_service => 'orchestrator00',
-    server_names      => $trusted['clientcert'],
+    server_names      => $trusted['certname'],
     ipaddresses       => $facts['networking']['ip'],
     ports             => '8142',
     options           => [

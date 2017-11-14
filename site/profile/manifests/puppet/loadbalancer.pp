@@ -45,7 +45,7 @@ class profile::puppet::loadbalancer (
   }
 
   haproxy::listen { 'stats':
-    ipaddress => $::ipaddress,
+    ipaddress => '0.0.0.0',
     ports     => '9090',
     options   => {
       'mode'  => 'http',
