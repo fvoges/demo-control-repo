@@ -1,14 +1,14 @@
 # Profile profile::base::ssh
 class profile::base::ssh (
-  Profile::Yes_no            $ssh_forward_agent            = 'no',
-  Profile::Yes_no            $ssh_hash_known_hosts         = 'yes',
-  Profile::Yes_no            $sshd_allow_agent_forwarding  = 'no',
-  Profile::Yes_no            $sshd_allow_tcp_forwarding    = 'no',
-  Profile::Yes_no            $sshd_allow_x11_forwarding    = 'no',
-  Profile::Yes_no            $sshd_permit_empty_passwords  = 'no',
-  Profile::Yes_no            $sshd_use_dns                 = 'no',
-  Profile::Yes_no            $sshd_password_authentication = 'yes',
-  Profile::Permit_root_login $sshd_permit_root_login       = 'yes',
+  Enum['yes','no']                                           $ssh_forward_agent            = 'no',
+  Enum['yes','no']                                           $ssh_hash_known_hosts         = 'yes',
+  Enum['yes','no']                                           $sshd_allow_agent_forwarding  = 'no',
+  Enum['yes','no']                                           $sshd_allow_tcp_forwarding    = 'no',
+  Enum['yes','no']                                           $sshd_allow_x11_forwarding    = 'no',
+  Enum['yes','no']                                           $sshd_permit_empty_passwords  = 'no',
+  Enum['yes','no']                                           $sshd_use_dns                 = 'no',
+  Enum['yes','no']                                           $sshd_password_authentication = 'yes',
+  Enum['yes','no','without-password','forced-commands-only'] $sshd_permit_root_login       = 'yes',
 ) {
   Sshd_config {
     require => Class['::ssh::config'],
