@@ -24,6 +24,8 @@ mod 'npwalker-pe_databases', '0.10.1'
 mod 'fvoges-pe_backup', '1.0.2'
 mod 'herculesteam-augeasproviders_ssh', '2.5.3'
 mod 'herculesteam-augeasproviders_core', '2.1.3'
+mod 'WhatsARanjit-node_manager', '0.6.0'
+mod 'zack-exports', '0.0.6'
 
 mod 'fvoges-ssh',
   :git => 'https://github.com/fvoges/puppet-ssh.git',
