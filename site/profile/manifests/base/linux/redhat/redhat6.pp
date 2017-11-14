@@ -1,6 +1,6 @@
 class profile::base::linux::redhat::redhat6 (
-  Hash[Hash] $packages,
-  Hash[Hash] $services,
+  Hash $packages,
+  Hash $services,
 ) {
 
   $packages.each | $p, $a | {
