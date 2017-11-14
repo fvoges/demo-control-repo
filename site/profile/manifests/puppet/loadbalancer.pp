@@ -32,7 +32,7 @@ class profile::puppet::loadbalancer (
     options   => {
       'balance' => 'leastconn',
       'mode'    => 'tcp',
-      'httpchk' => 'get /status/v1/simple',
+      # 'httpchk' => 'get /status/v1/simple',
     },
   }
 

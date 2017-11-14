@@ -36,7 +36,7 @@ class profile::puppet::balancermember () {
       'check-ssl',
       "ca-file ${cacrt}",
       "crl-file ${cacrl}",
-      'port 8142',
+      'port 8140',
       'verify required',
     ],
   }
